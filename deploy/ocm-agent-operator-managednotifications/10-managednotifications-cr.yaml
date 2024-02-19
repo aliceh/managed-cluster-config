@@ -6,6 +6,12 @@ metadata:
 spec:
   notifications:
     - activeBody: |-
+        Your cluster is currently alerting with 'KubeNodeUnschedulableSRE' because a worker node '${node}' can not drain. This is not an actionable alert for the SRE team. Please troubleshoot the node using this reference documentation: https://docs.openshift.com/rosa/rosa_cluster_admin/rosa-cordoning-nodes.
+      name: KubeNodeUnschedulableSRE
+      resendWait: 1
+      severity: Error
+      summary: "Action required: a worker node is Unschedulable for more than an hour"
+    - activeBody: |-
         Your cluster requires you to take action as there are multiple ingress controllers detected. Red Hat SRE strongly recommends using Openshift-managed Custom Domains instead, as multiple ingress controllers, if improperly configured, can lead to problems with internal and external networking.
       name: MultipleIngressControllersDetected
       resendWait: 24
